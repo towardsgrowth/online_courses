@@ -22,7 +22,7 @@ class Database:
     def create_table_courses(self):
         sql = '''CREATE TABLE IF NOT EXISTS courses(
             id  INTEGER PRIMARY KEY AUTOINCREMENT,
-            course_name TEXT
+            course_name TEXT NOT NULL
         )'''
         self.execute(sql, commit=True)
 
@@ -30,4 +30,13 @@ class Database:
     def add_course(self, course_name):
         sql = '''INSERT INTO courses (course_name) VALUES (?)'''
         self.execute(sql, course_name, commit=True)
+
+    def get_info(self):
+        sql = '''SELECT course_name FROM courses'''
+        return self.execute(sql, fetchall=True)
+
+    def delete_info(self):
+        sql = '''DELETE FROM courses'''
+        self.execute(sql, commit=True)
+
 

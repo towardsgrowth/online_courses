@@ -17,4 +17,9 @@ def yes_or_no():
     markup.add(btn3)
     return markup
 
+def cancel():
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
+    btn = KeyboardButton("Bekor qilish")
+    markup.add(btn)
+    return markup
 
